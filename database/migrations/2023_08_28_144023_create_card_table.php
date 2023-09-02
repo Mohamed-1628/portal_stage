@@ -13,14 +13,14 @@ class CreateCardTable extends Migration
      */
     public function up()
     {
-        Schema::create('card', function (Blueprint $table) {
+        Schema::create('cards', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('image')->nullable();
             $table->string('link');
             $table->string('btn');
             $table->string('description')->nullable();
-            $table->integer('order')->unique();
+            $table->integer('order');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateCardTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('card');
+        Schema::dropIfExists('cards');
     }
 }

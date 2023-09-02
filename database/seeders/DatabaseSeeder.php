@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(AdminTablesSeeder::class);
         \App\Models\User::factory(49)->create();
+        $this->call(CardsTableSeeder::class);
     }
 }
