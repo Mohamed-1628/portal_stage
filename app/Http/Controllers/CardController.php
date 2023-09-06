@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Card;
 use App\Models\User;
+use App\Models\CardUser;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
@@ -15,8 +16,9 @@ class CardController extends Controller
     public function index()
     {
         $cards =Card::all();
+        $favorites=CardUser::all();
         //$users=User::pluck('id','name')->where;
-        return view('cards',compact('cards'));
+        return view('cards',compact('cards','favorites'));
     }
 
     /**

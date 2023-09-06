@@ -18,34 +18,44 @@ class CardsTableSeeder extends Seeder
 
         \DB::table('cards')->delete();
         
-        \DB::table('cards')->insert(
-            [
-                [
-                    'name' => 'card1',
-                    'image' => NULL,
-                    'link' => 'http://cardlink1.com',
-                    'btn' => 'btntitle',
-                    'description' => 'card1',
-                    'order' => 1,
-                ],
-                [
-                    'name' => 'card2',
-                    'image' => NULL,
-                    'link' => 'http://cardlink2.com',
-                    'btn' => 'btntitle2',
-                    'description' => 'card2',
-                    'order' => 2,
-                ],
-                [
-                    'name' => 'card3',
-                    'image' => NULL,
-                    'link' => 'http://cardlink3.com',
-                    'btn' => 'btntitle3',
-                    'description' => 'card3',
-                    'order' => 3,
-                ],
-            ],
-        );
+        \DB::table('cards')->insert(array (
+            0 => 
+            array (
+                'id' => 1,
+                'name' => 'Google',
+                'image' => 'images/google.jpg',
+                'link' => 'https://www.google.com',
+                'btn' => 'google',
+                'description' => 'google',
+                'order' => 1,
+                'created_at' => NULL,
+                'updated_at' => '2023-09-02 13:26:36',
+            ),
+            1 => 
+            array (
+                'id' => 2,
+                'name' => 'wordpress',
+                'image' => 'images/wordpress.png',
+                'link' => 'https://wordpress.com/fr/',
+                'btn' => 'wordpress',
+                'description' => 'wordpress',
+                'order' => 2,
+                'created_at' => NULL,
+                'updated_at' => '2023-09-02 13:54:31',
+            ),
+            2 => 
+            array (
+                'id' => 3,
+                'name' => 'esi-sba',
+                'image' => 'images/esi-sba.png',
+                'link' => 'https://www.esi-sba.dz/fr/',
+                'btn' => 'esi-sba',
+                'description' => 'esi-sba',
+                'order' => 3,
+                'created_at' => NULL,
+                'updated_at' => '2023-09-02 13:59:49',
+            ),
+        ));
         
         
     }
