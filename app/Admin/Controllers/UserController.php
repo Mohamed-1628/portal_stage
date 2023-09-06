@@ -2,11 +2,12 @@
 
 namespace App\Admin\Controllers;
 
-use OpenAdmin\Admin\Controllers\AdminController;
+use App\Models\Card;
+use \App\Models\User;
 use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
-use \App\Models\User;
+use OpenAdmin\Admin\Controllers\AdminController;
 
 class UserController extends AdminController
 {
@@ -77,4 +78,6 @@ class UserController extends AdminController
 
         return $form;
     }
+
+    
 }
