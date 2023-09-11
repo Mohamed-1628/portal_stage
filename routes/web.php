@@ -16,12 +16,13 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [CardController::class,'index']);
+Route::get('/cards', [CardController::class,'index'])->name('cards');
+Route::get('/dashboard', [UserController::class,'Index'])->name('dashboard');
 Route::get('/bookmarks/{user_id}/{card_id}',[UserController::class,'bookmarks']);
 
-Route::get('/dashboard', function () {
+/*Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');*/
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

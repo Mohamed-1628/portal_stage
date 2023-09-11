@@ -12,6 +12,9 @@ class UserController extends Controller
 {
 
     public function Index(){
+        $favorites=CardUser::all();
+        $cards=Card::all();
+        return view('dashboard',compact('favorites','cards'));
 
     }
 
@@ -25,7 +28,7 @@ class UserController extends Controller
        $user->cards()->toggle($card_id);
        $favorites=CardUser::all();
 
-       return redirect("/")->with(compact('favorites'));
+       return redirect("/cards")->with(compact('favorites'));
 
     }
 
