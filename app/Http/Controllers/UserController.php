@@ -18,6 +18,13 @@ class UserController extends Controller
 
     }
 
+    public function aff(){
+        $favorites=CardUser::all();
+        $cards=Card::all();
+        return view('welcome',compact('favorites','cards'));
+
+    }
+
 
     public function bookmarks( $user_id , $card_id)
 
@@ -28,7 +35,9 @@ class UserController extends Controller
        $user->cards()->toggle($card_id);
        $favorites=CardUser::all();
 
-       return redirect("/cards")->with(compact('favorites'));
+       return redirect()->back()->with(compact('favorites'));
+       //redirect("/cards")
+       //back
 
     }
 

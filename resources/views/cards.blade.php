@@ -5,17 +5,11 @@
               {{ __('Dashboard') }}
           </h2>
       </x-slot>
-                <?php
-                    $id_user=Auth::user()->id;
-                ?>
+                
   
       <div class="grid grid-cols-4">
        
         @foreach ($cards as $card)
-        <?php
-          $id_card=$card->id;
-        ?>
-         
         
         <div class="card">
           <div class="image"><img class="image" src="{{$card->image}}" /></div>
@@ -38,16 +32,14 @@
                 </a>
                 <div title="Like" class="heart-container">
                   @foreach ($favorites as $favorite)
-                  <?php
-                      $card_id=$favorite->card_id;
-                      $user_id=$favorite->user_id;
-                  ?>
-                  @if ($card_id == $id_card  && $user_id==$id_user)
+                 
+                  @if ($favorite->card_id == $card->id  && $favorite->user_id==Auth::user()->id)
                     
                   
                   <input id="Give-It-An-Id" class="checkbox" type="checkbox" onclick="window.location.href='/bookmarks/{{ Auth::user()->id}}/{{$card->id}}'" checked>
                   @else
                   <input id="Give-It-An-Id" class="checkbox" type="checkbox" onclick="window.location.href='/bookmarks/{{ Auth::user()->id}}/{{$card->id}}'">
+                  
                   @endif
                   @endforeach
 
