@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Card;
 use App\Models\User;
-use App\Models\CardUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CardController extends Controller
 {
@@ -15,10 +15,22 @@ class CardController extends Controller
      */
     public function index()
     {
-        $cards =Card::all();
-        $favorites=CardUser::all();
-        //$users=User::pluck('id','name')->where;
-        return view('cards',compact('cards','favorites'));
+       $cards=Card::all();
+
+       
+    //    if (!empty($user_id)){
+           $user = User::find(Auth::user()->id);
+           $cards = $user->attachFavoriteStatus($cards);
+    //    }
+       
+        return view('cards',compact('cards'));
+    }
+    
+    public function favorites(){
+        $user = User::find(1);
+        $cards = $user->getFavoriteItems(Card::class)->get();
+
+        return view('dashboard',compact('cards'));
     }
 
     /**

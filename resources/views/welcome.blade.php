@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/CSS/cards.css">
+        <link rel="stylesheet" href="/CSS/welcome.css">
 
         <title>Laravel</title>
 
@@ -31,12 +31,12 @@
                     @endauth
                 </div>
             @endif
-
-            <div class="grid grid-cols-4">
+            <div class="Main">
+            
        
                 @foreach ($cards as $card)
                 
-                <div class="card">
+                <div class="card ml-10">
                   <div class="image"><img class="image" src="{{$card->image}}" /></div>
                    <div class="content">
                       <a href="#">
@@ -56,22 +56,10 @@
                           </span>
                         </a>
                         <div title="Like" class="heart-container">
-                          @foreach ($favorites as $favorite)
                          
-                          @if (Auth::user()== true)
-
-                          @if ($favorite->card_id == $card->id  && $favorite->user_id==Auth::user()->id)
-                            
                           
-                          <input id="Give-It-An-Id" class="checkbox" type="checkbox" onclick="window.location.href='/bookmarks/{{ Auth::user()->id}}/{{$card->id}}'" checked>
-                          @else
-                          <input id="Give-It-An-Id" class="checkbox" type="checkbox" onclick="window.location.href='/bookmarks/{{ Auth::user()->id}}/{{$card->id}}'">
-                          
-                          @endif
-                          @else
                           <input id="Give-It-An-Id" class="checkbox" type="checkbox" onclick="window.location.href='/cards'">
-                          @endif
-                          @endforeach
+                       
         
                         <div class="svg-container">
                           <svg xmlns="http://www.w3.org/2000/svg" class="svg-outline" viewBox="0 0 24 24">
@@ -98,6 +86,7 @@
                     @endforeach
                     
               </div>
-        </div>
+        
+    </div>
     </body>
 </html>

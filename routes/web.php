@@ -19,10 +19,10 @@ use App\Http\Controllers\UserController;
  //    return view('welcome');
 //});
 
-Route::get('/', [UserController::class,'aff']);
+// Route::get('/', [UserController::class,'aff']);->middleware(['auth'])
 
-Route::get('/cards', [CardController::class,'index'])->middleware(['auth'])->name('cards');
-Route::get('/dashboard', [UserController::class,'Index'])->name('dashboard');
+Route::get('/', [CardController::class,'index'])->name('cards.index');
+Route::get('/favorites', [CardController::class,'favorites'])->name('favorites');
 Route::get('/bookmarks/{user_id}/{card_id}',[UserController::class,'bookmarks']);
 
 /*Route::get('/dashboard', function () {

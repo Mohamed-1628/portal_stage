@@ -5,23 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Card;
 use App\Models\CardUser;
 use App\Models\User;
-use Doctrine\DBAL\Schema\Index;
-use Ramsey\Uuid\Type\Integer;
+
+
 
 class UserController extends Controller
 {
 
-    public function Index(){
-        $favorites=CardUser::all();
-        $cards=Card::all();
-        return view('dashboard',compact('favorites','cards'));
-
-    }
+    
 
     public function aff(){
-        $favorites=CardUser::all();
+       
         $cards=Card::all();
-        return view('welcome',compact('favorites','cards'));
+        return view('welcome',compact('cards'));
 
     }
 
@@ -31,9 +26,13 @@ class UserController extends Controller
     {      
        //find user & toggle pivot table
        $user = User::find($user_id); 
+       $card = Card::find($card_id);
+       $user->toggleFavorite($card);
+ 
+    //    $user->cards()->toggle($card_id);
+    //    $favorites=CardUser::all();
+       $favorites=$user->getFavoriteItems(Card::class)->get();
        
-       $user->cards()->toggle($card_id);
-       $favorites=CardUser::all();
 
        return redirect()->back()->with(compact('favorites'));
        //redirect("/cards")

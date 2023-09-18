@@ -6,8 +6,8 @@
           </h2>
       </x-slot>
                 
-  
-      <div class="grid grid-cols-4">
+      
+      <div class="mt-10 ml-10 grid grid-cols-4 gap-4">
        
         @foreach ($cards as $card)
         
@@ -31,17 +31,14 @@
                   </span>
                 </a>
                 <div title="Like" class="heart-container">
-                  @foreach ($favorites as $favorite)
+                  @auth
+                  <input id="Give-It-An-Id" class="checkbox" type="checkbox" onclick="window.location.href='/bookmarks/{{ Auth::user()->id }}/{{$card->id}}'" 
+                  {{ $card->has_favorited ? 'checked' : '' }}
+                  >                    
+                  @endauth
+                  
+                  
                  
-                  @if ($favorite->card_id == $card->id  && $favorite->user_id==Auth::user()->id)
-                    
-                  
-                  <input id="Give-It-An-Id" class="checkbox" type="checkbox" onclick="window.location.href='/bookmarks/{{ Auth::user()->id}}/{{$card->id}}'" checked>
-                  @else
-                  <input id="Give-It-An-Id" class="checkbox" type="checkbox" onclick="window.location.href='/bookmarks/{{ Auth::user()->id}}/{{$card->id}}'">
-                  
-                  @endif
-                  @endforeach
 
                 <div class="svg-container">
                   <svg xmlns="http://www.w3.org/2000/svg" class="svg-outline" viewBox="0 0 24 24">
@@ -65,8 +62,9 @@
             </div>
            </div>
          </div>
+        
             @endforeach
-            
+             
       </div>
   </x-app-layout>
   
