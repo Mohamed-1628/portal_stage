@@ -58,7 +58,7 @@
                         <div title="Like" class="heart-container">
                          
                           
-                          <input id="Give-It-An-Id" class="checkbox" type="checkbox" onclick="window.location.href='/cards'">
+                          <input id="Give-It-An-Id" class="checkbox" type="checkbox" onclick="window.location.href='/bookmarks/0/0'">
                        
         
                         <div class="svg-container">

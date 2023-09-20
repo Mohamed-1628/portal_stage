@@ -13,17 +13,22 @@ class CardController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    
     public function index()
     {
        $cards=Card::all();
 
        
-    //    if (!empty($user_id)){
+        if (!empty(Auth::user())){
+        
            $user = User::find(Auth::user()->id);
            $cards = $user->attachFavoriteStatus($cards);
-    //    }
+           return view('cards',compact('cards'));
+        }
        
-        return view('cards',compact('cards'));
+        return view('welcome',compact('cards'));
+        
     }
     
     public function favorites(){

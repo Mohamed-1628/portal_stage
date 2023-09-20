@@ -23,7 +23,6 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [CardController::class,'index'])->name('cards.index');
 Route::get('/favorites', [CardController::class,'favorites'])->name('favorites');
-Route::get('/bookmarks/{user_id}/{card_id}',[UserController::class,'bookmarks']);
 
 /*Route::get('/dashboard', function () {
     return view('dashboard');
@@ -33,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/bookmarks/{user_id}/{card_id}',[UserController::class,'bookmarks']);
 });
 
 require __DIR__.'/auth.php';
