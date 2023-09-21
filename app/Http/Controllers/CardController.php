@@ -32,7 +32,7 @@ class CardController extends Controller
     }
     
     public function favorites(){
-        $user = User::find(1);
+        $user = User::find(Auth::user()->id);
         $cards = $user->getFavoriteItems(Card::class)->get();
 
         return view('dashboard',compact('cards'));

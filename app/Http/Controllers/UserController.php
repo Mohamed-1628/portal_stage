@@ -14,12 +14,7 @@ class UserController extends Controller
 
     
 
-    public function aff(){
-       
-        $cards=Card::all();
-        return view('welcome',compact('cards'));
-
-    }
+    
 
 
     public function bookmarks( $user_id, $card_id)
